@@ -39,7 +39,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 index_to_label ={ind:lab for ind, lab in enumerate(labels)}
 model = CheckAudio()
-model.load_state_dict(torch.load('model.pth', map_location=device))
+torch.load("model.pth", map_location=device)
 model.to(device)
 model.eval()
 
