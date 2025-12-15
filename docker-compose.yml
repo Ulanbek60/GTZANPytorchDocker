@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  speech_api:
+    build: .
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
+    environment:
+      UVICORN_WORKERS: 2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http:localhost:8001/docs"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
